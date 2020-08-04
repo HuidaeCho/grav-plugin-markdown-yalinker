@@ -69,8 +69,4 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 
 ## Credits
 
-Adopted the `slug`' function from the Admin plugin (admin/classes/utils.php).
-
-## To Do
-
-- [ ] Future plans, if any
+Adopted the `slug` function from the Admin plugin (`admin/classes/utils.php`).
