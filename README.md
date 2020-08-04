@@ -62,10 +62,10 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 * `[[https://example.com|Example.com]]`: `<a href="https://example.com">Example.com</a>`
 * `[[mailto:me@example.com]]`: `<a href="mailto:me@example.com">mailto:me@example.com</a>`
 * `[[mailto:me@example.com|]]`: `<a href="mailto:me@example.com">mailto:me@example.com</a>`
-* `[[mailto:me@example.com|me@example.com]]`: `<a href="mailto:me@example.com">me@example.com</a>`
+* `[[mailto:me@example.com|Email Me]]`: `<a href="mailto:me@example.com">Email Me</a>`
 * `[[mail:me@example.com]]`: `<a href="mailto:me@example.com">me@example.com</a>`
 * `[[mail:me@example.com|]]`: `<a href="mailto:me@example.com">me@example.com</a>`
-* `[[mail:me@example.com|me@example.com]]`: `<a href="mailto:me@example.com">me@example.com</a>`
+* `[[mail:me@example.com|Email Me]]`: `<a href="mailto:me@example.com">Email Me</a>`
 
 ## Credits
 
