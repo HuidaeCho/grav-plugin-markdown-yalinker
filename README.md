@@ -1,6 +1,4 @@
-# Markdown Yet Another Linker
-
-**This README.md file should be modified to describe the features, installation, configuration, and general usage of the plugin.**
+# Grav Plugin: Markdown Yet Another Linker
 
 The **Markdown Yet Another Linker** Plugin is an extension for [Grav CMS](http://github.com/getgrav/grav). Adds the ability to create links with less typing in Markdown
 
