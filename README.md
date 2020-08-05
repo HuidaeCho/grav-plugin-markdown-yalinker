@@ -60,4 +60,6 @@ https://demo.isnew.info/grav/markdown-yalinker
 
 ## Credits
 
+Author: Huidae Cho
+
 Adopted the `slug` function from the Admin plugin (`admin/classes/utils.php`).
