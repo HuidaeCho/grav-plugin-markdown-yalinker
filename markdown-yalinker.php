@@ -20,15 +20,15 @@ class MarkdownYalinkerPlugin extends Plugin
         $markdown->addInlineType('[', 'Yalink');
         $markdown->inlineYalink = function($excerpt) {
             // syntax: [[link(|(text)?)?]]
-            // * [[page]] => <a href="page">page</a>
-            // * [[page|]] => <a href="page">page</a>
-            // * [[page|text]] => <a href="page">text</a>
-            // * [[../page]] => <a href="../page">page</a>
-            // * [[../page|]] => <a href="../page">../page</a>
-            // * [[../page|text]] => <a href="../page">text</a>
-            // * [[folder/slashes//in page title]] => <a href="folder/slashes-in-page-title">slashes/in page title</a>
-            // * [[folder/slashes//in page title|]] => <a href="folder/slashes-in-page-title">folder/slashes/in page title</a>
-            // * [[folder/slashes//in page title|text]] => <a href="folder/slashes-in-page-title">text</a>
+            // * [[page]] => <a href="/current/page">page</a>
+            // * [[page|]] => <a href="/current/page">page</a>
+            // * [[page|text]] => <a href="/current/page">text</a>
+            // * [[../page]] => <a href="/page">page</a>
+            // * [[../page|]] => <a href="/page">../page</a>
+            // * [[../page|text]] => <a href="/page">text</a>
+            // * [[/folder/slashes//in page title]] => <a href="/folder/slashes-in-page-title">slashes/in page title</a>
+            // * [[/folder/slashes//in page title|]] => <a href="/folder/slashes-in-page-title">folder/slashes/in page title</a>
+            // * [[/folder/slashes//in page title|text]] => <a href="/folder/slashes-in-page-title">text</a>
             // * [[url]] => <a href="url">url</a>
             // * [[mailto:...]] => <a href="mailto:...">mailto:...</a>
             // * [[mail:...]] => <a href="mailto:...">...</a>
