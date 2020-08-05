@@ -58,24 +58,26 @@ class MarkdownYalinkerPlugin extends Plugin
                 // if page
                     // escape non-folder slashes
                     if (strpos($href, '//') !== false) {
-                        $href = preg_replace('/\/+/', '-', $href);
+                        $href = preg_replace('/\/{2,}/', '-', $href);
                         if (!$has_text)
                             // for now, // => \x00
                             $text = preg_replace('/\/{2,}/', '\x00', $text);
                     }
 
-                    $href = self::slug($href);
+                    // handle page path in href
+                    if (preg_match('/^([\/.]*)\//', $href, $matches))
+                        $path_prefix = $matches[1];
+                    else
+                        $path_prefix = '';
+
+                    // add back path prefix that may has been removed by the slug() function
+                    $href = $path_prefix.self::slug($href);
 
                     if (!$has_text) {
-                        // handle page path
-                        if (preg_match('/^(([\/.]*)\/)?(?:[^\/]+\/)*(.*?)$/', $text, $matches)) {
-                            if ($matches[2])
-                                // add back path prefix that may has been removed by the slug() function
-                                $href = $matches[2].$href;
-                            if (!$show_path)
-                                // show page title only if requested (no | at the end)
-                                $text = $matches[3];
-                        }
+                        // handle page path in text
+                        if (!$show_path && preg_match('/^(?:[\/.]*\/)?(?:[^\/]+\/)*(.*?)$/', $text, $matches))
+                            // show page title only if requested (no | at the end)
+                            $text = $matches[1];
 
                         // convert escaped non-folder slashes back to slashes
                         $text = str_replace('\x00', '/', $text);
