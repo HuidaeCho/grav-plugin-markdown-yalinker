@@ -54,6 +54,8 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 | `[[/Root Path/Page Title\|Link Text]]` | `[/Root Path/Page Title](/root-path/page-title)` |
 | `[[https://example.com]]` | `<https://example.com>` |
 | `[[https://example.com\|Example.com]]` | `[Example.com](https://example.com)` |
+| `[[mailto:me@example.com]]` | `<mailto:me@example.com>` |
+| `[[mailto:me@example.com\|Email Me]]` | `[Email Me](mailto:me@example.com)` |
 | `[[mail:me@example.com]]` | `[me@example.com](mailto:me@example.com)` |
 | `[[mail:me@example.com\|Email Me]]` | `[Email Me](mailto:me@example.com)` |
 
