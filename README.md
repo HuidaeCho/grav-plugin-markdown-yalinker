@@ -54,9 +54,12 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 * `[[../Hello World!]]`: `<a href="../hello-world">Hello World!</a>`
 * `[[../Hello World!|]]`: `<a href="../hello-world">../Hello World!</a>`
 * `[[../Hello World!|Link Text]]`: `<a href="../hello-world">Link Text</a>`
-* `[[../Sibling World!/Slashes//in Page Title]]`: `<a href="../sibling-world/shasles-in-page-title">Slashes/in Page Title</a>`
-* `[[../Sibling World!/Slashes//in Page Title|]]`: `<a href="../sibling-world/shasles-in-page-title">../Sibling World!/Slashes/in Page Title</a>`
-* `[[../Sibling World!/Slashes//in Page Title|Link Text]]`: `<a href="../sibling-world/shasles-in-page-title">Link Text</a>`
+* `[[../Hello World!/Slashes//in Page Title]]`: `<a href="../hello-world/shasles-in-page-title">Slashes/in Page Title</a>`
+* `[[../Hello World!/Slashes//in Page Title|]]`: `<a href="../hello-world/shasles-in-page-title">../Hello World!/Slashes/in Page Title</a>`
+* `[[../Hello World!/Slashes//in Page Title|Link Text]]`: `<a href="../hello-world/shasles-in-page-title">Link Text</a>`
+* `[[Sibling World!/Slashes//in Page Title]]`: `<a href="sibling-world/shasles-in-page-title">Slashes/in Page Title</a>`
+* `[[Sibling World!/Slashes//in Page Title|]]`: `<a href="sibling-world/shasles-in-page-title">../Sibling World!/Slashes/in Page Title</a>`
+* `[[Sibling World!/Slashes//in Page Title|Link Text]]`: `<a href="sibling-world/shasles-in-page-title">Link Text</a>`
 * `[[https://example.com]]`: `<a href="https://example.com">https://example.com</a>`
 * `[[https://example.com|]]`: `<a href="https://example.com">https://example.com</a>`
 * `[[https://example.com|Example.com]]`: `<a href="https://example.com">Example.com</a>`
