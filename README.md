@@ -67,6 +67,10 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 * `[[mail:me@example.com|]]`: `<a href="mailto:me@example.com">me@example.com</a>`
 * `[[mail:me@example.com|Email Me]]`: `<a href="mailto:me@example.com">Email Me</a>`
 
+## Demo
+
+https://demo.isnew.info/grav/markdown-yalinker
+
 ## Credits
 
 Adopted the `slug` function from the Admin plugin (`admin/classes/utils.php`).
