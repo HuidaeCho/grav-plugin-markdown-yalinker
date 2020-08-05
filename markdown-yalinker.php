@@ -64,14 +64,42 @@ class MarkdownYalinkerPlugin extends Plugin
                             $text = preg_replace('/\/{2,}/', '\x00', $text);
                     }
 
-                    // handle page path in href
-                    if (preg_match('/^([\/.]*)\//', $href, $matches))
-                        $path_prefix = $matches[1];
-                    else
-                        $path_prefix = '';
+                    $uri = $this->grav['uri'];
+                    $rootUrl = $uri->rootUrl(); // /grav
+                    $route = $uri->route(); // /page
+
+                    // pre-clean up path in href
+                    if (strpos($href, '...') !== false)
+                        // a/...../b => a/../b
+                        $href = preg_replace('/\.{3,}/', '..', $href);
+                    if (strpos($href, '/./') !== false)
+                        // a/./././b => a/b
+                        $href = preg_replace('/(?:\/\.)+\//', '/', $href);
+                    if (strpos($href, './') === 0)
+                        // ./a => a
+                        $href = substr($href, 2);
+
+                    $path_prefix = $route.'/';
+                    if (preg_match('/^([\/.]*)\/(.*)$/', $href, $matches)) {
+                        if ($matches[1] && $matches[1][0] != '/')
+                            $path_prefix .= $matches[1].'/';
+                        else
+                            $path_prefix = '/';
+                        $href = $matches[2];
+                    }
 
                     // add back path prefix that may has been removed by the slug() function
                     $href = $path_prefix.self::slug($href);
+
+                    // post-clean up path in href
+                    $paths = explode('/', $href);
+                    $npaths = count($paths);
+                    for ($i = 0; $i < $npaths; $i++) {
+                        if ($paths[$i] == '..')
+                            $paths[$i - 1] = $paths[$i] = '';
+                    }
+                    $href = join('/', $paths);
+                    $href = $rootUrl.preg_replace('/\/\/+/', '/', $href);
 
                     if (!$has_text) {
                         // handle page path in text

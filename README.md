@@ -42,17 +42,17 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 
 ## Usage
 
-| YALink | HTML |
+| YALink | Markdown |
 | ------ | -------- |
-| `[[Page Title]]` | `<a href="page-title">Page Title</a>` |
-| `[[Page Title\|Link Text]]` | `<a href="page-title">Link Text</a>` |
-| `[[Slashes//in Page Title]]` | `<a href="slashes-in-page-title">Slashes/in Page Title</a>` |
-| `[[../Some Path/Page Title]]` | `<a href="../some-path/page-title">Page Title</a>` |
-| `[[../Some Path/Page Title\|]]` | `<a href="../some-path/page-title">../Some Path/Page Title</a>` |
-| `[[/Root Path/Page Title]]` | `<a href="/root-path/page-title">Page Title</a>` |
-| `[[https://example.com]]` | `<a href="https://example.com">https://example.com</a>` |
-| `[[mailto:me@example.com]]` | `<a href="mailto:me@example.com">mailto:me@example.com</a>` |
-| `[[mail:me@example.com]]` | `<a href="mailto:me@example.com">me@example.com</a>` |
+| `[[Page Title]]` | `[Page Title](page-title)` |
+| `[[Page Title\|Link Text]]` | `[Link Text](page-title)` |
+| `[[Slashes//in Page Title]]` | `[Slashes/in Page Title](slashes-in-page-title)` |
+| `[[../Some Path/Page Title]]` | `[Page Title](../some-path/page-title)` |
+| `[[../Some Path/Page Title\|]]` | `[../Some Path/Page Title](../some-path/page-title)` |
+| `[[/Root Path/Page Title]]` | `[Page Title](/root-path/page-title)` |
+| `[[https://example.com]]` | `<https://example.com>` |
+| `[[mailto:me@example.com]]` | `<mailto:me@example.com>` |
+| `[[mail:me@example.com]]` | `[me@example.com](mailto:me@example.com)` |
 
 ## Demo
 
