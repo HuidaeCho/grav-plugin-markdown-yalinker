@@ -46,18 +46,13 @@ Note that if you use the Admin Plugin, a file with your configuration named mark
 | ------ | -------- |
 | `[[Page Title]]` | `<a href="page-title">Page Title</a>` |
 | `[[Page Title\|Link Text]]` | `<a href="page-title">Link Text</a>` |
+| `[[Slashes//in Page Title]]` | `<a href="slashes-in-page-title">Slashes/in Page Title</a>` |
 | `[[../Some Path/Page Title]]` | `<a href="../some-path/page-title">Page Title</a>` |
 | `[[../Some Path/Page Title\|]]` | `<a href="../some-path/page-title">../Some Path/Page Title</a>` |
-| `[[../Some Path/Page Title\|Link Text]]` | `<a href="../some-path/page-title">Link Text</a>` |
 | `[[/Root Path/Page Title]]` | `<a href="/root-path/page-title">Page Title</a>` |
-| `[[/Root Path/Page Title\|]]` | `<a href="/root-path/page-title">/Root Path/Page Title</a>` |
-| `[[/Root Path/Page Title\|Link Text]]` | `<a href="/root-path/page-title">Link Text</a>` |
 | `[[https://example.com]]` | `<a href="https://example.com">https://example.com</a>` |
-| `[[https://example.com\|Example.com]]` | `<a href="https://example.com">Example.com</a>` |
 | `[[mailto:me@example.com]]` | `<a href="mailto:me@example.com">mailto:me@example.com</a>` |
-| `[[mailto:me@example.com\|Email Me]]` | `<a href="mailto:me@example.com">Email Me</a>` |
 | `[[mail:me@example.com]]` | `<a href="mailto:me@example.com">me@example.com</a>` |
-| `[[mail:me@example.com\|Email Me]]` | `<a href="mailto:me@example.com">Email Me</a>` |
 
 ## Demo
 
