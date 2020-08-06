@@ -19,7 +19,10 @@ class MarkdownYalinkerPlugin extends Plugin
 
         $markdown->addInlineType('[', 'Yalink');
         $markdown->inlineYalink = function($excerpt) {
-            // syntax: [[link(|(text)?)?]]
+            // syntax: [[(link)?(|(text)?)?]]
+            // * [[]] => <a href="/current">Current Title</a>
+            // * [[|]] => <a href="/current">/current</a>
+            // * [[.|]] => <a href="/current">.</a>
             // * [[page]] => <a href="/current/page">page</a>
             // * [[page|]] => <a href="/current/page">page</a>
             // * [[page|text]] => <a href="/current/page">text</a>
