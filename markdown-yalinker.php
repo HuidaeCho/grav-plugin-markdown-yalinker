@@ -34,21 +34,19 @@ class MarkdownYalinkerPlugin extends Plugin
             // * [[mail:...]] => <a href="mailto:...">...</a>
             if (strpos($excerpt['text'], '[[') === 0 && strpos($excerpt['text'], ']]') !== false && preg_match('/^\[\[(.*?)(?:\|(.+?))?\]\]/', $excerpt['text'], $matches)) {
                 $extent = strlen($matches[0]);
+                $href = $matches[1];
+                $has_text = isset($matches[2]);
 
                 $show_path = false;
-                if (isset($matches[2])) {
-                    $href = $matches[1];
+                if ($has_text)
                     $text = $matches[2];
-                    $has_text = true;
-                } else {
-                    $href = $matches[1];
+                else {
                     $len = strlen($href);
                     if ($len && $href[$len - 1] == '|') {
                         $href = substr($href, 0, $len - 1);
                         $show_path = true;
                     }
                     $text = $href;
-                    $has_text = false;
                 }
 
                 // if url
@@ -64,9 +62,10 @@ class MarkdownYalinkerPlugin extends Plugin
                             $text = preg_replace('/\/{2,}/', '\x00', $text);
                     }
 
-                    $uri = $this->grav['uri'];
-                    $rootUrl = $uri->rootUrl(); // /grav
-                    $route = $uri->route(); // /page
+                    $current_uri = $this->grav['uri'];
+                    $rootUrl = $current_uri->rootUrl(); // /grav
+                    $current_route = $current_uri->route(); // /current-page
+                    $current_title = $this->grav['page']->title(); // Current Page Title
 
                     // pre-clean up path in href
                     if (strpos($href, '...') !== false)
@@ -79,17 +78,29 @@ class MarkdownYalinkerPlugin extends Plugin
                         // ./a => a
                         $href = substr($href, 2);
 
-                    $path_prefix = $route.'/';
+                    $path_prefix = $current_route;
                     if (preg_match('/^([\/.]*)\/(.*)$/', $href, $matches)) {
                         if (strlen($matches[1]) && $matches[1][0] != '/')
-                            $path_prefix .= $matches[1].'/';
+                            // relative path
+                            $path_prefix .= $matches[1];
                         else
-                            $path_prefix = '/';
+                            // absolute path
+                            $path_prefix = '';
                         $href = $matches[2];
                     }
 
+                    switch ($href) {
+                    case '':
+                        if (!$has_text)
+                            $text = $show_path ? $path_prefix : $current_title;
+                        break;
+                    case '.':
+                        $href = '';
+                        break;
+                    }
+
                     // add back path prefix that may has been removed by the slug() function
-                    $href = $path_prefix.self::slug($href);
+                    $href = $path_prefix.($href ? '/'.self::slug($href) : '');
 
                     // post-clean up path in href
                     $paths = explode('/', $href);
