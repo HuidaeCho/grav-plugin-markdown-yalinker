@@ -36,7 +36,7 @@ class MarkdownYalinkerPlugin extends Plugin
                 $extent = strlen($matches[0]);
 
                 $show_path = false;
-                if ($matches[2]) {
+                if (strlen($matches[2])) {
                     $href = $matches[1];
                     $text = $matches[2];
                     $has_text = true;
@@ -81,7 +81,7 @@ class MarkdownYalinkerPlugin extends Plugin
 
                     $path_prefix = $route.'/';
                     if (preg_match('/^([\/.]*)\/(.*)$/', $href, $matches)) {
-                        if ($matches[1] && $matches[1][0] != '/')
+                        if (strlen($matches[1]) && $matches[1][0] != '/')
                             $path_prefix .= $matches[1].'/';
                         else
                             $path_prefix = '/';
