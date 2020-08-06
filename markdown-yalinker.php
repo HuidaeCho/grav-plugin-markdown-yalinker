@@ -36,7 +36,7 @@ class MarkdownYalinkerPlugin extends Plugin
                 $extent = strlen($matches[0]);
 
                 $show_path = false;
-                if (strlen($matches[2])) {
+                if (isset($matches[2]) && strlen($matches[2])) {
                     $href = $matches[1];
                     $text = $matches[2];
                     $has_text = true;
