@@ -43,7 +43,7 @@ class MarkdownYalinkerPlugin extends Plugin
                 } else {
                     $href = $matches[1];
                     $len = strlen($href);
-                    if ($len > 0 && $href[$len - 1] == '|') {
+                    if ($len && $href[$len - 1] == '|') {
                         $href = substr($href, 0, $len - 1);
                         $show_path = true;
                     }
