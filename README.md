@@ -64,4 +64,4 @@ Author: Huidae Cho
 
 Adopted the `slug` function from the Admin plugin (`user/plugins/admin/classes/utils.php`).
 
-A huge thanks to [the Grav team](https://getgrav.org/about) for [https://getgrav.org/](their great software).
+A huge thanks to [the Grav team](https://getgrav.org/about) for [their great software](https://getgrav.org/).
