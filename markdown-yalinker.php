@@ -103,7 +103,7 @@ class MarkdownYalinkerPlugin extends Plugin
 
                     if (!$has_text) {
                         // handle page path in text
-                        if (!$show_path && preg_match('/^(?:[\/.]*\/)?(?:[^\/]+\/)*(.*?)$/', $text, $matches))
+                        if (!$show_path && preg_match('/^(?:[\/.]*\/)?(?:[^\/]+\/)*(.*)$/', $text, $matches))
                             // show page title only if requested (no | at the end)
                             $text = $matches[1];
 
@@ -133,7 +133,7 @@ class MarkdownYalinkerPlugin extends Plugin
         };
     }
 
-    // Adopted from the Admin plugin (admin/classes/utils.php)
+    // Adopted from the Admin plugin (user/plugins/admin/classes/utils.php)
     public static function slug(string $str)
     {
         if (function_exists('transliterator_transliterate')) {
