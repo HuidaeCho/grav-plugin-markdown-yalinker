@@ -148,7 +148,7 @@ class MarkdownYalinkerPlugin extends Plugin
     }
 
     // Adopted from the Admin plugin (user/plugins/admin/classes/utils.php)
-    public static function slug(string $str)
+    private static function slug(string $str)
     {
         if (function_exists('transliterator_transliterate')) {
             $str = transliterator_transliterate('Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC;', $str);
