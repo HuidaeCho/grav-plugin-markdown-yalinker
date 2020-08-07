@@ -27,7 +27,3 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    text_var:
-      type: text
-      label: PLUGIN_PAGE_LINKER.TEXT_VARIABLE
-      help: PLUGIN_PAGE_LINKER.TEXT_VARIABLE_HELP
