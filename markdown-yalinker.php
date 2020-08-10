@@ -151,10 +151,10 @@ class MarkdownYalinkerPlugin extends Plugin
         };
     }
 
-    // Adopted from the Admin plugin (user/plugins/admin/classes/utils.php)
     private static function slug(string $str, $utf8_slugs=false)
     {
         if (!$utf8_slugs) {
+            // Adopted from the Admin plugin (user/plugins/admin/classes/utils.php)
             if (function_exists('transliterator_transliterate')) {
                 $str = transliterator_transliterate('Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC;', $str);
             } else {
