@@ -6,6 +6,8 @@ use RocketTheme\Toolbox\Event\Event;
 
 class MarkdownYalinkerPlugin extends Plugin
 {
+    protected $utf8_slugs = false;
+
     public static function getSubscribedEvents()
     {
         return [
@@ -15,6 +17,8 @@ class MarkdownYalinkerPlugin extends Plugin
 
     public function onMarkdownInitialized(Event $event)
     {
+        $this->utf8_slugs = $this->config->get('plugins.markdown-yalinker.utf8_slugs');
+
         $markdown = $event['markdown'];
 
         $markdown->addInlineType('[', 'Yalink');
@@ -103,7 +107,7 @@ class MarkdownYalinkerPlugin extends Plugin
                     }
 
                     // add back path prefix that may has been removed by the slug() function
-                    $href = $path_prefix.($href ? '/'.self::slug($href) : '');
+                    $href = $path_prefix.($href ? '/'.self::slug($href, $this->utf8_slugs) : '');
 
                     // post-clean up path in href
                     $paths = explode('/', $href);
@@ -148,19 +152,30 @@ class MarkdownYalinkerPlugin extends Plugin
     }
 
     // Adopted from the Admin plugin (user/plugins/admin/classes/utils.php)
-    private static function slug(string $str)
+    private static function slug(string $str, $utf8_slugs=false)
     {
-        if (function_exists('transliterator_transliterate')) {
-            $str = transliterator_transliterate('Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC;', $str);
+        if (!$utf8_slugs) {
+            if (function_exists('transliterator_transliterate')) {
+                $str = transliterator_transliterate('Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC;', $str);
+            } else {
+                $str = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $str);
+            }
+
+            $str = strtolower($str);
+            $str = preg_replace('/[\s.]+/', '-', $str);
+            // leave slashes as is
+            $str = preg_replace('/[^a-z0-9\/-]/', '', $str);
         } else {
-            $str = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $str);
+            // replace forbidden characters by -
+            // leave slashes as is
+            $str = preg_replace('/[ \t`~!@#\$%^&*=+\\\\|;:\'",?()\[\]{}<>_.]+/', '-', $str);
+            // trim
+            $str = trim($str, '-');
+            // lowercase
+            $str = strtolower($str);
         }
 
-        $str = strtolower($str);
-        $str = preg_replace('/[\s.]+/', '-', $str);
-        // leave slashes as is
-        $str = preg_replace('/[^a-z0-9\/-]/', '', $str);
-        // page./.slug => page/slug
+        // page-/-slug => page/slug
         $str = preg_replace('/-?\/-?/', '/', $str);
         $str = trim($str, '-');
 

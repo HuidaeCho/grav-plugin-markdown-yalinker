@@ -1,0 +1,4 @@
+en:
+  PLUGIN_MARKDOWN_YALINKER:
+    UTF8_SLUGS: UTF-8 slugs
+    UTF8_SLUGS_HELP: Only replace whitespaces and `~!@#$%^&*=+\|;:'",/?()[]{}<>_. by -, and leave UTF-8 characters as is in slugs
