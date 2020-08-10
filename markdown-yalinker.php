@@ -70,7 +70,7 @@ class MarkdownYalinkerPlugin extends Plugin
                     }
 
                     $current_uri = $this->grav['uri'];
-                    $rootUrl = $current_uri->rootUrl(); // /grav
+                    $root_url = $current_uri->rootUrl(); // /grav
                     $current_route = $current_uri->route(); // /current-page
                     $current_title = $this->grav['page']->title(); // Current Page Title
 
@@ -117,7 +117,7 @@ class MarkdownYalinkerPlugin extends Plugin
                             $paths[$i - 1] = $paths[$i] = '';
                     }
                     $href = join('/', $paths);
-                    $href = $rootUrl.preg_replace('/\/\/+/', '/', $href);
+                    $href = $root_url.preg_replace('/\/\/+/', '/', $href);
 
                     if (!$has_text) {
                         // handle page path in text
