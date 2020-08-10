@@ -89,7 +89,7 @@ class MarkdownYalinkerPlugin extends Plugin
                     if (preg_match('/^([\/.]*)\/(.*)$/', $href, $matches)) {
                         if (strlen($matches[1]) && $matches[1][0] != '/')
                             // relative path
-                            $path_prefix .= $matches[1];
+                            $path_prefix .= '/'.$matches[1];
                         else
                             // absolute path
                             $path_prefix = '';
