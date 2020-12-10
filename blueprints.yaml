@@ -1,7 +1,7 @@
 name: Markdown Yet Another Linker
 slug: markdown-yalinker
 type: plugin
-version: 0.1.0
+version: 1.0.0
 description: Adds the ability to create links with less typing in Markdown
 icon: plug
 author:
